@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <link rel="stylesheet" type="text/css" media="screen" href="../stylesheets/stylesheet.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,700italic,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous"> 
+  <title>Pooling the polls: Denmark, 2010-2018</title>
+  <meta name=description content="Pooling the polls: Denmark, 2010-2018" />
+  <meta name=author content="Zoltán Fazekas" />
+  </head>
+
+  <body>
+        <p align="center" style="color: #f2f2f2; font-size:18px; font-weight: 700; font-family: Roboto Condensed";><a href="../index.html">zoltán fazekas</a>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="../docs/cv-zfazekas-web.pdf">cv</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="../publications.html">research</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="../teaching.html">teaching</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="../notes.html">notes</a></p>
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+
+<br>
+<h1>Pooling the polls: Denmark, 2010-2018</h1>
+<p>Written by Zoltán Fazekas and <a href = "http://erikgahner.dk", target="_blank">Erik Gahner Larsen</a><small><span style="float: right">Updated: 17-Sep-2018</small></p>
+<br>
+<p>With the Danish general election coming up (to be held on or before the 17th of June 2019), it is important to know where the different parties stand in the polls and understand the challenges related to obtaining this information. To shed light on this, we present results based on a pooling the polls model. We use an up-to-date <a href = "https://github.com/erikgahner/polls", target="_blank">dataset</a> centralizing polls in Denmark.
+
+<p>We rely on the model presented by Jackman (<a href="#jackman">2005</a>). He formulates good reasons behind and advantages of this model:</p>
+<ul>
+  <li>"If two or more polls are in the field at more or less the same time, then we have the potential to combine the information in each poll, to arrive at an estimate that is more precise than any single poll" (page 503)</li>
+  <li>"Polls are subject to bias, and, in particular, biases specific to particular polling organizations, known as 'house effects' (the term 'house' here refers to a polling company, not a sampled household). Variations in mode of interview (telephone, face-to-face, or Internet), sampling and weighting procedures, the day of the week or the time of day a company interviews, the age, ethnic and gender composition of a given company's interviewers, question wording and question ordering are all potential sources of bias in survey research" (page 503-504)</li>
+</ul>
+
+<p>The first goal of this post is to offer a snapshot of party support evolution from 20th January 2010 to 3rd September 2018 (comprising of 1,214 polls). The second goal is to assess the magnitude of polling company related systematic biases. Specifically, the reported party support numbers might be subject to the sampling frame employed by the different polling companies. Overall, our data covers 10 parties and 9 polling companies. If you are unfamiliar with the Danish parties (which is normal), we list the ones analyzed in the table below.</p>
+
+<table align="center" width="100%">
+ <thead>
+  <tr>
+   <th style="text-align:left; border-bottom:1px solid black; border-top:1px solid black"> Abbreviation </th>
+   <th style="text-align:center; border-bottom:1px solid black; border-top:1px solid black"> Danish name </th>
+   <th style="text-align:center; border-bottom:1px solid black; border-top:1px solid black"> English name</th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> SD </td>
+   <td style="text-align:center;"> Socialdemokraterne </td>
+   <td style="text-align:center;"> Social Democrats </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> V </td>
+   <td style="text-align:center;"> Venstre </td>
+   <td style="text-align:center;"> Liberal Party </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> DF </td>
+   <td style="text-align:center;"> Dansk Folkeparti </td>
+   <td style="text-align:center;"> Danish Peoples Party </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> RV </td>
+   <td style="text-align:center;"> Radikale Venstre </td>
+   <td style="text-align:center;"> Danish Social Liberal Party </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> En-O </td>
+   <td style="text-align:center;"> Enhedslisten – De Rød-Grønne </td>
+   <td style="text-align:center;"> Red-Green Alliance </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> KF </td>
+   <td style="text-align:center;"> Konservative Folkeparti </td>
+   <td style="text-align:center;"> Conservative People's Party </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> SF </td>
+   <td style="text-align:center;"> Socialistisk Folkeparti </td>
+   <td style="text-align:center;"> Socialist Peoples Party</td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> LA </td>
+   <td style="text-align:center;"> Liberal Alliance </td>
+   <td style="text-align:center;"> Liberal Alliance </td>
+  </tr>
+    <tr>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:center;"> Alternativet </td>
+   <td style="text-align:center;"> The Alternative </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; border-bottom:1px solid black"> NB </td>
+   <td style="text-align:center; border-bottom:1px solid black"> Nye Borgerlige </td>
+   <td style="text-align:center; border-bottom:1px solid black"> The New Right </td>
+  </tr>
+</tbody>
+</table>
+
+<p></p>
+
+
+<p>It is important to emphasize that we do not engage here in any sort of prediction. We summarize the results in two main sections: the <a href="#parties">parties</a> and the <a href="#firms">polling companies</a>. We rely on visual display and briefly discuss some of the main insights. After a <a href="#summary">summary</a>, we also have a short section on some <a href="#method">methodological choices</a> we made.</p>
+
+
+<h2 id="parties">The parties</h2>
+
+<p>The overall results are displayed in the first plot of the section. Such an analysis seems to be useful when commentators would want to assert broader points about party support evolution. There is nothing spectacular or unexpected here, rather the resulting averages and trends trace well with otherwise invoked analysis. We have also added dashed lines for key political events in the period, i.e. the two national elections, the two local elections and the European Parliament election.</p>
+
+<p></p>
+
+<img src="fig_notes/parties_all.png" alt="party support 1" style = "width: 150%">
+<small><span style="float: left">[<a href = "fig_notes/parties_all.pdf", target="_blank">Open enlarged PDF</a>]</small>
+
+<p style = "margin-bottom: 1cm"></p>
+
+<p>As there is always an interest in a win-lose narrative (<i>horse race journalism</i>), some examples are warranted based on this period: Enhedslisten and DF followed a strengthening and then stabilizing pattern. Conversely, SF and KF registered a decrease and then stabilizing around these lower support numbers. The figure also highlights that V has been registering systematically higher support compared to SD (and itself) during the SD led government period, especially up until the 2014 EP elections.</p>
+
+<p>A closer look at the end of our period (last measurement: 3rd of September 2018) reveals three points:</p>
+<ol>
+	<li>DF and V are indistinguishable in terms of support.</li>
+	<li>Five smaller parties in the range of 3.8% to 6.3% are basically indistinguishable in terms of support, with very minor exceptions and small differences.</li>
+	<li>The new right-wing party Nye Borgerlige is hovering around the 2% mark (the electoral threshold).</li>
+</ol>
+
+<p>We might also want to compare at various time points how the estimates from the pooling model fare in comparison with actual electoral results. Looking at the figure above, it is rather clear that the pooled model is quite uninformative for EP and local election support. Which is great, since it offers some face validity of the measures: our estimates are based on questions referring to vote intention in the national elections.</p>
+
+<p>This exercise however can generate quite misleading conclusions. The reason for it is simple: our model uses information from all polls, which means that the estimate of the average support for a party on 2011-09-14 (one day before the elections) will be quite aware of polling post-election. Even though we do not include the actual results as data points into our model, if polls "self-correct" after the election has taken place (which they do), the estimates will be quite close to the election results (the support for Danish People's Party in the wake of the 2015 election is a good example). The bias of such a comparison depends on the combination of how good the post-election poll adjustments were and how are the data split around elections. This also means that a world in which even poll based election result predictions (before the actual elections) were way off and close match between a full period pooling the polls model and election results is a happy, consistent world.</p>
+
+<p>The figure below offers the party support plots for each party separately, without monthly smoothing and the actual polling numbers from each poll. In addition, it lists the results from the national elections and the model based average support on the day before the elections were held (with uncertainty, always -- we ain't no barbarians).</p>
+
+<p></p>
+
+<img src="fig_notes/parties_split.png" alt="party support 2" style = "width: 135%">
+<small><span style="float: left">[<a href = "fig_notes/parties_split.pdf", target="_blank">Open enlarged PDF</a>]</small>
+
+<p style = "margin-bottom: 1cm"></p>
+
+<p>While there is slightly more clutter here, it is also more straight forward to make some of the comparisons we intended to make. If you had thought we will not emphasize again the biased nature of this comparison, you were wrong. The best way to think of these numbers and comparisons would be to retrospectively ask how well do we know party support on a particular day, using all data, that also happens to be an election day.</p>
+
+<i>2011</i>
+<ul>
+	<li>Within uncertainty bounds: DF, SD, Enhedslisten, RV, LA</li>
+	<li>Outside uncertainty (compared to bounds):</li>
+	<ul>
+		<li>Overestimated: SF (+1%) & KF (+0.6%)</li>
+		<li>Underestimated: V (-0.3%)</li>
+	</ul>
+</ul>
+
+<i>2015</i>
+<ul>
+	<li>Within uncertainty bounds: LA, Alternativet</li>
+	<li>Outside uncertainty (compared to bounds):</li>
+	<ul>
+		<li>Overestimated: V (+0.2%), Enhedslisten (+0.5%), KF (+0.1%), RV (+0.2%), SF (+0.9%) </li>
+		<li>Underestimated: DF (-2.5%) & SD (-0.7%)</li>
+	</ul>
+</ul>
+
+<p>Overall, without judging how well or badly the model estimates and implicitly the polls match election results (they do pretty well though), the 2015 DF underestimation and the twice appearing SF overestimation by around 1% should be highlighted. Yet again, this in a context that we used all available polling information pre- and post-elections.</p>
+
+<p>Finally, an often used benchmark in the discussion about how parties are doing is based on previous electoral results. We facilitate such a comparison with a dedicated plot below.</p>
+
+<p></p>
+
+<img src="fig_notes/parties_elect.png" alt="party support 3" style = "width: 135%">
+<small><span style="float: left">[<a href = "fig_notes/parties_elect.pdf", target = "_blank">Open enlarged PDF</a>]</small>
+
+<p style = "margin-bottom: 1cm"></p>
+
+<p>Four parties outperform their 2015 election shares: Enhedslisten, RV, SF, and KF. So, we see KF and SF looking slightly stronger in the polls compared to their election results, however, in the long run and compared to the start of the period analyzed, they clearly lost a lot of support. Three parties underperform: DF, LA, and V. As visible in the figure, for some of these parties, especially V, the differences are quite small and very close to the uncertainty bounds of the poll estimates. For the rest of the parties, when uncertainty is taken into account, we do not see any significant movement.</p>
+
+<h2 id="firms">The polling companies</h2>
+
+<p>We now turn to the magnitude of specific biases associated with polling companies. It might be tempting to consider some of these as partisan biases, but that thought should be dismissed early on. There might or might not be such biases, we definitely cannot evaluate that. What we document here should mostly reflect biases related to data collection, sample quality and composition, method, and so on. These are inherently polling related possibilities for bias. In the first figure we offer a broader summary and we follow up in the next with a display containing more granularity and information.</p>
+
+<p></p>
+
+<img src="fig_notes/house_heatmap.png" alt="house heatmap" style = "width: 135%">
+<small><span style="float: left">[<a href = "fig_notes/house_heatmap.pdf", target = "_blank">Open enlarged PDF</a>]</small>
+
+<p style = "margin-bottom: 1cm"></p>
+
+
+<p></p>
+
+<img src="fig_notes/house_partysplit.png" alt="house split" style = "width: 135%">
+<small><span style="float: left">[<a href = "fig_notes/house_partysplit.pdf", target = "_blank">Open enlarged PDF</a> | <a href = "fig_notes/house_firmsplit.pdf", target = "_blank">Open alternative plot</a>]</small>
+
+<p style = "margin-bottom: 1cm"></p>
+
+The key takeaway points are:
+<ul>
+	<li>While there is variation across party &times; company cells, generally, house effects are modest in Denmark.</li>
+	<li>Greens and Gallup stand out with overall smallest and fewest house effects.</li>
+	<li>Focusing on the three largest parties, house effects for V are moderate to small, whereas for SD and DF larger effects (-/+) are split between 2-3 polling companies.</li>
+	<li>For Enhedslisten and Alternativet (and to some extent SF and RV), house effects are smallest and fewest, suggesting that systematic sample composition and method related differences between polling companies are least influential.</li>
+	<li>New and small parties are hard to measure (Nye Borgerlige) and polling company differences are the largest.</li>
+</ul>
+
+<p></p>
+
+<p>In order to substantiate or rather highlight some of the takeaway points formulated above, in the figure below we display which polling companies had the largest house effects for each party, and alternatively, which parties registered the highest house effects within each polling company. Since house effects can be negative (systematically underestimating a party) or positive (systematically overestimating a party), both minimums and maximums are plotted below.</p>
+
+<img src="fig_notes/house_minmax.png" alt="house mm" style = "width: 135%">
+<small><span style="float: left">[<a href = "fig_notes/house_minmax.pdf", target = "_blank">Open enlarged PDF</a>]</small>
+
+<p style = "margin-bottom: 1cm"></p>
+
+<p></p>
+
+<p>We note that Epinion, Gallup, and Megafon are the ones that register no maximum (or minimum) house effects, and that Nye Borgerlige and SD are the parties most often appearing with largest within company house effects. This last observation invites further discussion. Of course, one can argue that a house effect of 1% can mean very different things for a party hovering around the 2% electoral threshold compared to one generally polling above 20%. Thus, in the final figure, we simply divided the magnitude of the largest house effects with the estimated average party support for each party. This is nothing more than a scaling exercise.</p>
+
+<img src="fig_notes/house_minmaxscaled.png" alt="house mmsc" style = "width: 135%">
+<small><span style="float: left">[<a href = "fig_notes/house_minmaxscaled.pdf", target="_blank">Open enlarged PDF</a>]</small>
+
+<p style = "margin-bottom: 1cm"></p>
+
+<p>Indeed, the largest house effects for Nye Borgerlige amount to more than half of their estimated size, since they are the smallest, but also newest actual party. There is quite a sharp contrast between this party and all other parties, not only the three larger parties. Somewhat unsurprisingly, this just reiterates that measuring smaller parties is harder, but also that samples traditionally employed by many polling companies result in substantial systematic differences in the estimated support for Nye Borgerlige. The reason we highlight potentially sampling and data collection related differences is also grounded in the comparison with Alternativet: while older, larger, and through one election, it is still the most comparable on such features to Nye Borgerlige, but not the expected voter base. However, the house effects patterns and magnitudes for Alternativet look different, much more similar to previously established, larger parties. This is nothing more than to say that interpretations and commentary focusing on Nye Borgerlige even with pooled averages should be done in a much more cautious way.</p>
+
+
+<h2 id="summary">Summary</h2>
+
+<p>This section is the <b>tl;dr</b> version of this note.</p>
+
+<ul>
+	<li>What did we do and why?</li>
+	<ol>
+		<li>Estimated a pooling the polls model for the January 2010 to September 2018 period using 1214 polls from 9 polling companies.</li>
+		<li>Because combining information from multiple polls helps getting more precise estimates of party support (compared to single or separate polls) and allows to assess biases specific to particular polling organizations.</li>
+	</ol>
+	<li>What did we find for party support and house effects?</li>
+	<ol>
+		<li>Pooling the polls estimates track (retrospectively) well party support. At the most recent measurement, DF and V are indistinguishable in terms of support, so is a block of five smaller parties in the 3.8% to 6.3% range.</li>
+    <li>Overall house effects are moderate in Denmark, companies such as Greens and Gallup doing best in this regard.</li>
+		<li>New and rather small parties such as Nye Borgerlige are difficult to measure and there are large, systematic differences in how well polling companies can do it. Interpretation of NB support should be extra careful.</li>
+	</ol>
+</ul>
+
+<h2 id="method">Methodological note on sample sizes</h2>
+
+For the polls analyzed, beyond the party support numbers, the sample size of each poll features in the model as this information is needed for uncertainty calculations. While for most polls (95%) this information can be tracked down, some reports do not include any information on the sample sizes. As displayed by the table below, there is a systematic bias in sample size availability, where an overwhelming proportion of lacking sample size information stems from YouGov polls.
+
+<p></p>
+
+<table align="center" width="75%">
+ <thead>
+  <tr>
+   <th style="text-align:left; border-bottom:1px solid black; border-top:1px solid black"> Company </th>
+   <th style="text-align:center; border-bottom:1px solid black; border-top:1px solid black"> Polls </th>
+   <th style="text-align:center; border-bottom:1px solid black; border-top:1px solid black"> % sample size NA<small>*</small></th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> YouGov </td>
+   <td style="text-align:center;"> 142 </td>
+   <td style="text-align:center;"> 40.85 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Gallup </td>
+   <td style="text-align:center;"> 150 </td>
+   <td style="text-align:center;"> 3.33 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Rambøll </td>
+   <td style="text-align:center;"> 106 </td>
+   <td style="text-align:center;"> 0.94 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Megafon </td>
+   <td style="text-align:center;"> 141 </td>
+   <td style="text-align:center;"> 0.71 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Voxmeter </td>
+   <td style="text-align:center;"> 348 </td>
+   <td style="text-align:center;"> 0.00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Epinion </td>
+   <td style="text-align:center;"> 122 </td>
+   <td style="text-align:center;"> 0.00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Greens </td>
+   <td style="text-align:center;"> 109 </td>
+   <td style="text-align:center;"> 0.00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Norstat </td>
+   <td style="text-align:center;"> 51 </td>
+   <td style="text-align:center;"> 0.00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; border-bottom:1px solid black"> Wilke </td>
+   <td style="text-align:center; border-bottom:1px solid black"> 45 </td>
+   <td style="text-align:center; border-bottom:1px solid black"> 0.00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left"><small>*</small> NA = not available. </td>
+  </tr>
+</tbody>
+</table>
+
+<p></p>
+
+<p>Furthermore, this is a feature of a particular period: the lacking sample sizes are for YouGov polls carried out between 2012 and 2015. While hopefully this can be rectified in the future, for the purposes of the current analysis, for each missing sample size we imputed the median sample size of each respective polling company. Alternatively, we also fitted our model where we imputed a sample size of 1000 uniformly for all missing values. The results do not differ in any substantive or substantial sense.</p>
+
+<p> If we use the uniform 1000 we are on the conservative side (it is among the lowest sample sizes) and polling companies where sample size is not available are punished more heavily, if in reality they had larger sample sizes. This approach would simply mean that we incorporate uncertainty about the sample size to a larger manner. Using the median value when needed for each polling company is a `fairer' approach, when one company is responsible for most of the missing values, especially when evaluating the house effects. Thus, we report here results based on the second approach, mostly to underscore that some of the larger house effects for YouGov are <b>not due to conservative sample size imputation</b>.</p>
+
+<h2>References</h2>
+
+<a name = "jackman" href = "http://eppsac.utdallas.edu/files/jackman/CAJP%2040-4%20Jackman.pdf", target="_blank">Jackman, S. (2005). Pooling the polls over an election campaign. Australian Journal of Political Science, 40(4), 499-517.</a>
+
+</div>
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p align="center" style="font-size:35px;"><a href="https://twitter.com/fazol" target="_blank"><i class="fab fa-twitter"></i></a> &nbsp;<a href="https://github.com/zfazekas" target="_blank"><i class="fab fa-github"></i></a>&nbsp;
+    <a href="https://scholar.google.dk/citations?user=aa975yEAAAAJ&hl=en" target="_blank"><i class="ai ai-google-scholar-square"></i></a><p>
+      </footer>
+    </div>
+</body>
+</html>
