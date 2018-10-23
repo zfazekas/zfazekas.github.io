@@ -3,6 +3,9 @@ Edited Slate Theme for GitHub Pages / original:
 by Jason Costello, @jsncostello
 *******************************************************************************/
 
+@import url(normalize.css);
+@import url(pygment_trac.css);
+
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -186,4 +189,75 @@ td {
 
 #footer_wrap {
   background: #212121;
+}
+
+/*******************************************************************************
+Small Device Styles
+*******************************************************************************/
+
+@media screen and (max-width: 992px) {
+  img {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 13px;
+  }
+
+  .downloads {
+    display: none;
+  }
+
+  .outer {
+    padding: 0;
+  }
+
+  .inner {
+    min-width: 320px;
+    max-width: 480px;
+  }
+
+  #header_wrap .inner {
+    padding: 60px 10px;
+  }
+
+  #main_content.inner {
+    padding: 10px;
+  }
+
+  #project_title {
+  font-size: 32px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 21px;
+  }
+
+  h4 {
+    font-size: 18px;
+  }
+
+  h5 {
+    font-size: 14px;
+  }
+
+  h6 {
+    font-size: 12px;
+  }
+
+  code, pre {
+    min-width: 320px;
+    max-width: 480px;
+    font-size: 11px;
+  }
 }
