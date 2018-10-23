@@ -115,11 +115,13 @@ p img {
 }
 
 blockquote {
-  color: #666;
+  color: #444948;
+  font-size: 18px;
+  font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
+  background-color: #68b3c4;
   margin: 0 0 20px 2px;
   padding-left: 20px;
-  border-left: 3px solid #bbb;
-  font-style: italic;
+  border-left: 3px solid #444948;
 }
 
 ul, ol, dl {
