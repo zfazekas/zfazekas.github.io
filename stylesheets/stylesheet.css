@@ -14,13 +14,13 @@ body {
   color:#373737;
   background: #fff;
   font-size: 16px;
-  font-family: 'Merriweather', serif;
-  line-height: 1.5;
+  font-family: 'Roboto condensed', sans-serif;
+  line-height: 1.25;
   -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Merriweather', serif;
+  font-family: 'Roboto condensed', sans-serif;
   margin: 10px 0;
   font-weight: 700;
   color:#222222;
@@ -69,8 +69,8 @@ h6 {
 }
 
 p {
-  font-family: "Roboto Slab",
-  font-size: 18px;
+  font-family: 'Roboto condensed', sans-serif;
+  font-size: 16px;
   margin: 0px 0 15px 0;
 }
 
@@ -117,7 +117,7 @@ p img {
 blockquote {
   font-color: #444948;
   font-size: 18px;
-  font-family: "Roboto Condensed", Helvetica, Arial, sans-serif;
+  font-family: 'Roboto condensed', sans-serif;
   font-weight: 700;
   line-height: 2.2;
   margin: 0 0 20px 2px;
@@ -147,7 +147,7 @@ dl p {
 
 
 table {
-  border: 1px dotted;
+  /*border: 1px dotted;*/
   margin-bottom: 20px;
   margin-top: 10px;
   text-align: left;
