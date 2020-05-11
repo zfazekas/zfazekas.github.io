@@ -14,13 +14,13 @@ body {
   color:#373737;
   background: #fff;
   font-size: 16px;
-  font-family: 'Roboto condensed', sans-serif;
+  font-family: 'PT Sans', sans-serif;
   line-height: 1.25;
   -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Roboto condensed', sans-serif;
+  font-family: 'PT Sans', sans-serif;
   margin: 10px 0;
   font-weight: 700;
   color:#222222;
@@ -69,7 +69,7 @@ h6 {
 }
 
 p {
-  font-family: 'Roboto condensed', sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 16px;
   margin: 0px 0 15px 0;
 }
@@ -117,7 +117,7 @@ p img {
 blockquote {
   font-color: #444948;
   font-size: 18px;
-  font-family: 'Roboto condensed', sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-weight: 700;
   line-height: 2.2;
   margin: 0 0 20px 2px;
