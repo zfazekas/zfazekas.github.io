@@ -78,10 +78,10 @@ footer p {
   color: #f2f2f2;
 }
 
-a:link    { color: #C7533A; text-decoration: none;      }
-a:visited { color: #C7533A; text-decoration: none;      }
-a:active  { color: #6D3A45; text-decoration: underline; }
-a:hover   { color: #6D3A45; text-decoration: underline; }
+a:link    { color: #42868f; text-decoration: none;      }
+a:visited { color: #42868f; text-decoration: none;      }
+a:active  { color: #0b284d; text-decoration: underline; }
+a:hover   { color: #0b284d; text-decoration: underline; }
       
 em {
   font-style: italic;
