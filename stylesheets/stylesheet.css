@@ -11,8 +11,8 @@ by Jason Costello, @jsncostello
 }
 
 body {
-  color:#373737;
-  background: #fff;
+  color:#ebe6c5;
+  background: #38393b;
   font-size: 16px;
   font-family: 'PT Sans', sans-serif;
   line-height: 1.25;
@@ -23,7 +23,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'PT Sans', sans-serif;
   margin: 10px 0;
   font-weight: 700;
-  color:#222222;
+  color:#e6e4df;
 }
 
 h1 {
@@ -78,10 +78,10 @@ footer p {
   color: #f2f2f2;
 }
 
-a:link    { color: #42868f; text-decoration: none;      }
-a:visited { color: #42868f; text-decoration: none;      }
-a:active  { color: #0b284d; text-decoration: underline; }
-a:hover   { color: #0b284d; text-decoration: underline; }
+a:link    { color: #db8e8a; text-decoration: none;      }
+a:visited { color: #db8e8a; text-decoration: none;      }
+a:active  { color: #e6e4df; text-decoration: underline; }
+a:hover   { color: #e6e4df; text-decoration: underline; }
       
 em {
   font-style: italic;
@@ -98,11 +98,11 @@ img {
   padding: 5px;
   margin: 10px 0 10px 0;
 
-  box-shadow: 0 0 5px #ebebeb;
-  -webkit-box-shadow: 0 0 5px #ebebeb;
-  -moz-box-shadow: 0 0 5px #ebebeb;
-  -o-box-shadow: 0 0 5px #ebebeb;
-  -ms-box-shadow: 0 0 5px #ebebeb;
+  box-shadow: 0 0 5px #e6e4df;
+  -webkit-box-shadow: 0 0 5px #e6e4df;
+  -moz-box-shadow: 0 0 5px #e6e4df;
+  -o-box-shadow: 0 0 5px #e6e4df;
+  -ms-box-shadow: 0 0 5px #e6e4df;
 }
 
 p img {
@@ -184,12 +184,12 @@ td {
 }
 
 #main_content.inner {
-  background-color: #fff;
+  background-color: #38393b;
   padding: 70px 100px;
 }
 
 #footer_wrap {
-  background: #fff;
+  background: #38393b;
 }
 
 /*******************************************************************************
