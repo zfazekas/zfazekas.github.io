@@ -2,7 +2,6 @@
 Edited Slate Theme for GitHub Pages / original:
 by Jason Costello, @jsncostello
 *******************************************************************************/
-
 @import url(normalize.css);
 @import url(pygment_trac.css);
 
@@ -11,19 +10,20 @@ by Jason Costello, @jsncostello
 }
 
 body {
-  color:#ebe6c5;
-  background: #38393b;
-  font-size: 16px;
-  font-family: 'PT Sans', sans-serif;
+  color:#121212;
+  background: #f2f5f4;
+  font-size: 20px;
+  font-family: "Alegreya Sans", sans-serif;
   line-height: 1.25;
+  font-weight: 500;
   -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'PT Sans', sans-serif;
+  font-family: "Alegreya Sans", sans-serif;
   margin: 10px 0;
   font-weight: 700;
-  color:#e6e4df;
+  color:#121212;
 }
 
 h1 {
@@ -69,8 +69,8 @@ h6 {
 }
 
 p {
-  font-family: 'PT Sans', sans-serif;
-  font-size: 16px;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 20px;
   margin: 0px 0 15px 0;
 }
 
@@ -78,10 +78,10 @@ footer p {
   color: #f2f2f2;
 }
 
-a:link    { color: #db8e8a; text-decoration: none;      }
-a:visited { color: #db8e8a; text-decoration: none;      }
-a:active  { color: #e6e4df; text-decoration: underline; }
-a:hover   { color: #e6e4df; text-decoration: underline; }
+a:link    { color: #28706f; text-decoration: none;      }
+a:visited { color: #28706f; text-decoration: none;      }
+a:active  { color: #121212; text-decoration: underline; }
+a:hover   { color: #121212; text-decoration: underline; }
       
 em {
   font-style: italic;
@@ -98,12 +98,12 @@ img {
   padding: 5px;
   margin: 10px 0 10px 0;
 
-  box-shadow: 0 0 5px #e6e4df;
-  -webkit-box-shadow: 0 0 5px #e6e4df;
-  -moz-box-shadow: 0 0 5px #e6e4df;
-  -o-box-shadow: 0 0 5px #e6e4df;
-  -ms-box-shadow: 0 0 5px #e6e4df;
-}
+/*  box-shadow: 0 0 5px #121212;
+  -webkit-box-shadow: 0 0 5px #121212;
+  -moz-box-shadow: 0 0 5px #121212;
+  -o-box-shadow: 0 0 5px #121212;
+  -ms-box-shadow: 0 0 5px #121212;
+*/}
 
 p img {
   display: inline;
@@ -117,7 +117,7 @@ p img {
 blockquote {
   font-color: #444948;
   font-size: 18px;
-  font-family: 'PT Sans', sans-serif;
+  font-family: 'Alegreya Sans', sans-serif;
   font-weight: 700;
   line-height: 2.2;
   margin: 0 0 20px 2px;
@@ -184,12 +184,12 @@ td {
 }
 
 #main_content.inner {
-  background-color: #38393b;
+  background-color: #f2f5f4;
   padding: 70px 100px;
 }
 
 #footer_wrap {
-  background: #38393b;
+  background: #f2f5f4;
 }
 
 /*******************************************************************************
