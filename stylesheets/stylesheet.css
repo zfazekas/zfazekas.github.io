@@ -11,7 +11,7 @@ by Jason Costello, @jsncostello
 
 body {
   color:#121212;
-  background: #f2f5f4;
+  background: #c8dae8;
   font-size: 20px;
   font-family: "Alegreya Sans", sans-serif;
   line-height: 1.25;
@@ -78,10 +78,10 @@ footer p {
   color: #f2f2f2;
 }
 
-a:link    { color: #28706f; text-decoration: none;      }
-a:visited { color: #28706f; text-decoration: none;      }
-a:active  { color: #121212; text-decoration: underline; }
-a:hover   { color: #121212; text-decoration: underline; }
+a:link    { color: #de4640; text-decoration: none;      }
+a:visited { color: #de4640; text-decoration: none;      }
+a:active  { color: #3578c4; text-decoration: underline; }
+a:hover   { color: #3578c4; text-decoration: underline; }
       
 em {
   font-style: italic;
@@ -184,12 +184,12 @@ td {
 }
 
 #main_content.inner {
-  background-color: #f2f5f4;
+  background-color: #c8dae8;
   padding: 70px 100px;
 }
 
 #footer_wrap {
-  background: #f2f5f4;
+  background: #c8dae8;
 }
 
 /*******************************************************************************
